@@ -1,5 +1,35 @@
+:root {
+    --background-color: #f8e88a;
+    --background-color-gradient: linear-gradient(to top right, #edd157, #f8e88a);
+    --sheet-background-color: #fefdfa;
+    --sheet-background-color-gradient: linear-gradient(to bottom right, #fefdfa, #f4f3ec);
+}
+
 * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--background-color);
+    background-image: var(--background-color-gradient);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#todo-sheet-container {
+    min-width: 500px;
+    min-height: 700px;
+    background-color: var(--sheet-background-color);
+    background-image: var(--sheet-background-color-gradient);
+    box-shadow: 10px 10px 20px rgb(0, 0, 0, 0.2);
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
