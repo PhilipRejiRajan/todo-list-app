@@ -3,6 +3,8 @@
     --background-color-gradient: linear-gradient(to top right, #edd157, #f8e88a);
     --sheet-background-color: #fefdfa;
     --sheet-background-color-gradient: linear-gradient(to bottom right, #fefdfa, #f4f3ec);
+    --primary-color: #737944;
+    --secondary-color: #d3cec0;
 }
 
 * {
@@ -32,4 +34,38 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
+}
+
+#nav-bar {
+    width: 100%;
+    min-height: 80px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 0 15px;
+    position: absolute;
+    top: 10px;
+}
+
+#menu-icon {
+    width: 50px;
+    height: 50px;
+}
+
+#blank-container {
+    flex-grow: 2;
+}
+
+#icon-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-icons {
+    width: 30px;
+    height: 30px;
 }
