@@ -18,6 +18,63 @@
                     <img src="icons/more-icon.png" class="nav-icons">
                 </div>
             </section>
+            <section id="todo-sheet">
+
+                <div class="todo-heading">
+                    <h1 class="todo-title">Sample</h1>
+                </div>
+
+                <div class="todo-body">
+                    <div class="task-container">
+                        
+                        <!-- Task 1 -->
+                        <div class="tasks">
+                            <label for="task-1">
+                                Task 1
+                                <span class="custom-checkbox"></span>
+                            </label>
+                            <input type="checkbox" name="task-1" id="task-1">
+                        </div>
+                        
+                        <!-- Task 2 -->
+                        <div class="tasks">
+                            <label for="task-2">
+                                Task 2
+                                <span class="custom-checkbox"></span>
+                            </label>
+                            <input type="checkbox" name="task-2" id="task-2">
+                        </div>
+
+                        <!-- Task 3 -->
+                        <div class="tasks">
+                            <label for="task-3">
+                                Task 3
+                                <span class="custom-checkbox"></span>
+                            </label>
+                            <input type="checkbox" name="task-3" id="task-3">
+                        </div>
+
+                    </div>
+
+                    <div class="new-task-creator">
+                        <form action="">
+                            <input 
+                                type="text" 
+                                name="new-task" 
+                                id="new-task" 
+                                class="new-input list" 
+                                placeholder="+ List another item"
+                            />
+                        </form>
+                    </div>
+                </div>
+
+                <div class="todo-actions">
+                    <p class="last-edited">Edited...</p>
+                    <button type="submit">+</button>
+                </div>
+                
+            </section>
         </div>
         <script src="app.js"></script>
     </body>
