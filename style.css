@@ -171,7 +171,7 @@ body {
 
 .tasks:hover .custom-checkbox, 
 [type="checkbox"]:focus + label .custom-checkbox {
-    border-color: var(--secondary-color);
+    border-color: var(--primary-color);
 }
 
 [type="checkbox"]:checked + label .custom-checkbox {
