@@ -5,6 +5,7 @@
     --sheet-background-color-gradient: linear-gradient(to bottom right, #fefdfa, #f4f3ec);
     --primary-color: #737944;
     --secondary-color: #d3cec0;
+    --add-button-color: #f5e56f;
 }
 
 * {
@@ -15,6 +16,7 @@
 
 html {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 16pt;
 }
 
 body {
@@ -55,6 +57,14 @@ body {
     top: 10px;
 }
 
+#nav-bar img {
+    cursor: pointer;
+}
+
+#nav-bar img:hover {
+    opacity: 0.7;
+}
+
 #menu-icon {
     width: 50px;
     height: 50px;
@@ -80,7 +90,8 @@ body {
 #todo-sheet {
     width: 100%;
     min-height: 610px;
-    padding: 0 15px;
+    padding: 0 30px;
+    color: var(--primary-color);
 
     display: flex;
     flex-direction: column;
@@ -88,19 +99,111 @@ body {
     bottom: 0;
 }
 
-.new-input {
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid black;
-    outline: none;
+.todo-title {
+    font-weight: 400;
+}
 
+.todo-body {
+    flex-grow: 1;
+}
+
+.tasks label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 10px 0 10px 0;
+    cursor: pointer;
+}
+
+.tasks label::after {
+    content: "";
+    height: 2px;
+    
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    
+    background-color: var(--secondary-color);
+    opacity: 0.4;
+}
+
+.tasks:hover .custom-checkbox, 
+[type="checkbox"]:focus + label .custom-checkbox {
+    border-color: var(--primary-color);
+}
+
+[type="checkbox"] {
+    opacity: 0;
+    position: absolute;
+}
+
+[type="checkbox"]:checked + label .custom-checkbox {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.custom-checkbox {
+    --size: 25px;
+    display: inline-block;
+    width: var(--size);
+    height: var(--size);
+
+    border: 2px solid var(--secondary-color);
+    border-radius: 2px;
+}
+
+.new-input {
+    width: 100%;
+    padding: 10px 0 10px 0;
+    background: transparent;
+
+    border: none;
+    border-bottom: 2px solid var(--secondary-color);
+    outline: none;
     transition: border-bottom 150ms ease-in;
 }
 
+.new-input::placeholder {
+    color: var(--secondary-color);
+}
+
 .new-input:focus {
-    border-bottom-width: 2px;
+    border-bottom-width: 3px;
 }
 
 .new-input:focus::placeholder {
     opacity: 0.5;
+}
+
+.todo-actions {
+    height: 120px;
+    padding-bottom: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.todo-actions p {
+    font-style: italic;
+}
+
+.todo-actions button {
+    --size: 80px;
+    width: var(--size);
+    height: var(--size);
+
+    background-color: var(--add-button-color);
+    color: white;
+    font-size: 40pt;
+    cursor: pointer;
+
+    border: 0;
+    border-radius: 50%;
+    box-shadow: 5px 5px 10px rgb(0, 0, 0, 0.2);;
+}
+
+.todo-actions button:hover {
+    opacity: 0.7;
 }
