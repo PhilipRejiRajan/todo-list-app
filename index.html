@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>ToDo List App</title>
         <link rel="stylesheet" href="style.css">
+        <script src="app.js" defer></script>
     </head>
     <body>
         <div id="todo-sheet-container">
@@ -31,8 +32,10 @@
                         <div class="tasks">
                             <input type="checkbox" name="task-1" id="task-1">
                             <label for="task-1">
-                                Task 1
-                                <span class="custom-checkbox"></span>
+                                <div class="task-text">Task 1</div>
+                                <span class="custom-checkbox">
+                                    <img src="icons/check-mark.png" class="check-mark">
+                                </span>
                             </label>
                         </div>
                         
@@ -40,8 +43,10 @@
                         <div class="tasks">
                             <input type="checkbox" name="task-2" id="task-2">
                             <label for="task-2">
-                                Task 2
-                                <span class="custom-checkbox"></span>
+                                <div class="task-text">Task 2</div>
+                                <span class="custom-checkbox">
+                                    <img src="icons/check-mark.png" class="check-mark">
+                                </span>
                             </label>
                         </div>
 
@@ -49,20 +54,22 @@
                         <div class="tasks">
                             <input type="checkbox" name="task-3" id="task-3">
                             <label for="task-3">
-                                Task 3
-                                <span class="custom-checkbox"></span>
+                                <div class="task-text">Task 3</div>
+                                <span class="custom-checkbox">
+                                    <img src="icons/check-mark.png" class="check-mark">
+                                </span>
                             </label>
                         </div>
 
                     </div>
 
                     <div class="new-task-creator">
-                        <form action="">
+                        <form id="task-form" action="">
                             <input 
                                 type="text" 
                                 name="new-task" 
                                 id="new-task" 
-                                class="new-input list" 
+                                class="new-input" 
                                 placeholder="+ List another item"
                             />
                         </form>
@@ -70,12 +77,11 @@
                 </div>
 
                 <div class="todo-actions">
-                    <p class="last-edited">Edited...</p>
-                    <button type="submit">+</button>
+                    <p id="last-edited-message">Edited...</p>
+                    <button type="submit" id="submit-button" form="task-form">+</button>
                 </div>
                 
             </section>
         </div>
-        <script src="app.js"></script>
     </body>
 </html>

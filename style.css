@@ -30,7 +30,7 @@ body {
     align-items: center;
 }
 
-#todo-sheet-container {
+#todo-app-container {
     min-width: 500px;
     min-height: 700px;
     background-color: var(--sheet-background-color);
@@ -89,14 +89,14 @@ body {
 
 #todo-sheet {
     width: 100%;
-    min-height: 610px;
+    min-height: 490px;
     padding: 0 30px;
     color: var(--primary-color);
 
     display: flex;
     flex-direction: column;
     position: absolute;
-    bottom: 0;
+    top: 90px;
 }
 
 .todo-title {
@@ -105,6 +105,11 @@ body {
 
 .todo-body {
     flex-grow: 1;
+}
+
+[type="checkbox"] {
+    opacity: 0;
+    position: absolute;
 }
 
 .tasks label {
@@ -129,19 +134,28 @@ body {
     opacity: 0.4;
 }
 
-.tasks:hover .custom-checkbox, 
-[type="checkbox"]:focus + label .custom-checkbox {
-    border-color: var(--primary-color);
+.task-text {
+    width: 100%;
+    margin-right: 30px;
 }
 
-[type="checkbox"] {
-    opacity: 0;
-    position: absolute;
+[type="checkbox"] + label > .task-text {
+    position: relative;
 }
 
-[type="checkbox"]:checked + label .custom-checkbox {
+[type="checkbox"]:checked + label > .task-text {
+    opacity: 0.5;
+}
+
+[type="checkbox"]:checked + label > .task-text::after {
+    content: "";
+    height: 2px;
     background-color: var(--primary-color);
-    border-color: var(--primary-color);
+    
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 50%;
 }
 
 .custom-checkbox {
@@ -152,6 +166,27 @@ body {
 
     border: 2px solid var(--secondary-color);
     border-radius: 2px;
+    flex-shrink: 0;
+}
+
+.tasks:hover .custom-checkbox, 
+[type="checkbox"]:focus + label .custom-checkbox {
+    border-color: var(--primary-color);
+}
+
+[type="checkbox"]:checked + label .custom-checkbox {
+    background-color: var(--secondary-color);
+}
+
+.check-mark {
+    --size: 20px;
+    width: var(--size);
+    height: var(--size);
+    display: none;
+}
+
+[type="checkbox"]:checked + label .custom-checkbox > .check-mark{
+    display: block;
 }
 
 .new-input {
@@ -177,9 +212,17 @@ body {
     opacity: 0.5;
 }
 
-.todo-actions {
+#sheet-actions {
+    width: 100%;
     height: 120px;
-    padding-bottom: 40px;
+    color: var(--primary-color);
+    
+    padding: 0 30px 40px;
+    position: absolute;
+    bottom: 0;
+}
+
+.todo-actions {
     display: flex;
     justify-content: space-between;
     align-items: end;
@@ -201,7 +244,7 @@ body {
 
     border: 0;
     border-radius: 50%;
-    box-shadow: 5px 5px 10px rgb(0, 0, 0, 0.2);;
+    box-shadow: 5px 5px 10px rgb(0, 0, 0, 0.2);
 }
 
 .todo-actions button:hover {
