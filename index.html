@@ -8,7 +8,7 @@
         <script src="app.js" defer></script>
     </head>
     <body>
-        <div id="todo-sheet-container">
+        <div id="todo-app-container">
             <section id="nav-bar">
                 <img src="icons/menu-icon.png" id="menu-icon">
                 <div id="blank-container"></div>
@@ -20,67 +20,30 @@
                 </div>
             </section>
             <section id="todo-sheet">
-
                 <div class="todo-heading">
-                    <h1 class="todo-title">Sample</h1>
+                    <h1 class="todo-title">To-Do</h1>
                 </div>
-
                 <div class="todo-body">
-                    <div class="task-container">
-                        
-                        <!-- Task 1 -->
-                        <div class="tasks">
-                            <input type="checkbox" name="task-1" id="task-1">
-                            <label for="task-1">
-                                <div class="task-text">Task 1</div>
-                                <span class="custom-checkbox">
-                                    <img src="icons/check-mark.png" class="check-mark">
-                                </span>
-                            </label>
-                        </div>
-                        
-                        <!-- Task 2 -->
-                        <div class="tasks">
-                            <input type="checkbox" name="task-2" id="task-2">
-                            <label for="task-2">
-                                <div class="task-text">Task 2</div>
-                                <span class="custom-checkbox">
-                                    <img src="icons/check-mark.png" class="check-mark">
-                                </span>
-                            </label>
-                        </div>
-
-                        <!-- Task 3 -->
-                        <div class="tasks">
-                            <input type="checkbox" name="task-3" id="task-3">
-                            <label for="task-3">
-                                <div class="task-text">Task 3</div>
-                                <span class="custom-checkbox">
-                                    <img src="icons/check-mark.png" class="check-mark">
-                                </span>
-                            </label>
-                        </div>
-
-                    </div>
-
+                    <div class="task-container" id="task-container"></div>
                     <div class="new-task-creator">
-                        <form id="task-form" action="">
+                        <form id="task-form">
                             <input 
                                 type="text" 
                                 name="new-task" 
-                                id="new-task" 
+                                id="task-input" 
                                 class="new-input" 
                                 placeholder="+ List another item"
+                                autocomplete="off"
                             />
                         </form>
                     </div>
                 </div>
-
+            </section>
+            <section id="sheet-actions">
                 <div class="todo-actions">
                     <p id="last-edited-message">Edited...</p>
-                    <button type="submit" id="submit-button" form="task-form">+</button>
+                    <button id="submit-button" form="task-form">+</button>
                 </div>
-                
             </section>
         </div>
     </body>
