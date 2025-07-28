@@ -206,7 +206,7 @@ body {
 
 .task-container {
     max-height: 370px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 [type="checkbox"] {
