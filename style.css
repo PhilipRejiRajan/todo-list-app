@@ -28,6 +28,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 #todo-app-container {
@@ -100,9 +101,10 @@ body {
 
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     background-color: var(--sheet-background-color);
+    z-index: 1;
 }
 
-.icon-dropdowns:hover .dropdown-content{
+.icon-dropdowns:hover .dropdown-content {
     display: block;
 }
 
@@ -206,7 +208,7 @@ body {
 
 .task-container {
     max-height: 370px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 [type="checkbox"] {
