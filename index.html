@@ -13,10 +13,28 @@
                 <img src="icons/menu-icon.png" id="menu-icon">
                 <div id="blank-container"></div>
                 <div id="icon-container">
-                    <img src="icons/palette-icon.png" class="nav-icons">
-                    <img src="icons/bell-icon.png" class="nav-icons">
-                    <img src="icons/add-user-icon.png" class="nav-icons">
-                    <img src="icons/more-icon.png" class="nav-icons">
+                    <div class="icon-dropdowns">
+                        <img src="icons/palette-icon.png" class="nav-icons" id="palette-icon">
+                        <div class="dropdown-content">
+                            <div class="palette-options">
+                                <button class="palette-color-buttons" id="yellow-color-button"></button>
+                                <button class="palette-color-buttons" id="blue-color-button"></button>
+                                <button class="palette-color-buttons" id="green-color-button"></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="icon-dropdowns">
+                        <img src="icons/bell-icon.png" class="nav-icons">
+                    </div>
+                    <div class="icon-dropdowns">
+                        <img src="icons/add-user-icon.png" class="nav-icons">
+                    </div>
+                    <div class="icon-dropdowns">
+                        <img src="icons/more-icon.png" class="nav-icons" id="more-icon">
+                        <div class="dropdown-content">
+                            <button id="clear-all-button">Clear All Tasks</button>
+                        </div>
+                    </div>
                 </div>
             </section>
             <section id="todo-sheet">
