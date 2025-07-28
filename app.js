@@ -2,7 +2,10 @@ const newTaskForm = document.getElementById('task-form')
 const newTaskInput = document.getElementById('task-input')
 const taskContainer = document.getElementById('task-container')
 const submitButton = document.getElementById('submit-button')
-const clearAllButton = document.getElementById('menu-icon')
+const clearAllButton = document.getElementById('clear-all-button')
+const yellowColorButton = document.getElementById('yellow-color-button')
+const blueColorButton = document.getElementById('blue-color-button')
+const greenColorButton = document.getElementById('green-color-button')
 
 let allTasks = loadTasks()
 updateTaskContainer()
@@ -14,6 +17,18 @@ newTaskForm.addEventListener('submit', e => {
 
 clearAllButton.addEventListener('click', () => {
     clearAllTasks()
+})
+
+yellowColorButton.addEventListener('click', () => {
+    document.body.className = 'yellow-color'
+})
+
+blueColorButton.addEventListener('click', () => {
+    document.body.className = 'blue-color'
+})
+
+greenColorButton.addEventListener('click', () => {
+    document.body.className = 'green-color'
 })
 
 function addTask() {
