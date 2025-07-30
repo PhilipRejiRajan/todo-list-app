@@ -294,6 +294,25 @@ body {
     display: block;
 }
 
+.created-on-date {
+    min-width: 200px;
+    height: 25px;
+    background-color: black;
+    border: 1px solid white;
+
+    color: white;
+    font-size: 12pt;
+    text-align: center;
+
+    display: none;
+    position: absolute;
+    z-index: 1;
+}
+
+.tasks:hover .created-on-date {
+    display: block;
+}
+
 .new-input {
     width: 100%;
     padding: 10px 0 10px 0;

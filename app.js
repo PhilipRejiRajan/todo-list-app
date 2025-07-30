@@ -3,12 +3,17 @@ const newTaskInput = document.getElementById('task-input')
 const taskContainer = document.getElementById('task-container')
 const submitButton = document.getElementById('submit-button')
 const clearAllButton = document.getElementById('clear-all-button')
+
 const yellowColorButton = document.getElementById('yellow-color-button')
 const blueColorButton = document.getElementById('blue-color-button')
 const greenColorButton = document.getElementById('green-color-button')
 
 let allTasks = loadTasks()
 updateTaskContainer()
+
+document.addEventListener('DOMContentLoaded', () => {
+    todoLastEdited()
+})
 
 newTaskForm.addEventListener('submit', e => {
     e.preventDefault()
@@ -35,6 +40,7 @@ function addTask() {
     const taskText = newTaskInput.value.trim()
     if(taskText.length > 0 || taskText.value == '') {
         const taskObject = {
+            createdTime: taskCreatedTime(),
             text: taskText,
             completed: false
         }
@@ -42,6 +48,7 @@ function addTask() {
         updateTaskContainer()
         saveTasks()
         newTaskInput.value = ''
+        todoLastEdited()
     }
 }
 
@@ -49,6 +56,7 @@ function createTask(task, taskIndex) {
     const taskID = 'task-' + taskIndex
     const newTask = document.createElement("div")
     const taskText = task.text
+    const taskCreatedOn = task.createdTime
     newTask.className = 'tasks'
     newTask.innerHTML = `
     <input type="checkbox" name="${taskID}" id="${taskID}">
@@ -57,7 +65,8 @@ function createTask(task, taskIndex) {
         <span class="custom-checkbox">
             <img src="icons/check-mark.png" class="check-mark">
         </span>
-    </label>
+        </label>
+    <div class="created-on-date">Created on: ${taskCreatedOn}</div>
     `
     const checkBox = newTask.querySelector('input')
     checkBox.addEventListener('change', () => {
@@ -90,4 +99,23 @@ function clearAllTasks() {
     localStorage.clear()
     taskContainer.innerHTML = ''
     location.reload()
+}
+
+function taskCreatedTime () {
+    const createdTime = new Date()
+    const date = createdTime.getDate()
+    const month = createdTime.getMonth()
+    const year = createdTime.getFullYear()
+    const time = createdTime.toLocaleTimeString()
+
+    const taskCreatedOn = `${date}-${month}-${year} ${time}`
+    return taskCreatedOn
+}
+
+function todoLastEdited() {
+    const allTasksLength = allTasks.length
+    if (allTasksLength > 0) {
+        const lastTaskCreatedOn = allTasks[allTasksLength - 1].createdTime
+        document.getElementById('last-edited-message').innerText = 'Edited on ' + lastTaskCreatedOn
+    }
 }
