@@ -13,6 +13,7 @@ updateTaskContainer()
 
 document.addEventListener('DOMContentLoaded', () => {
     todoLastEdited()
+    getSheetTheme()
 })
 
 newTaskForm.addEventListener('submit', e => {
@@ -26,14 +27,17 @@ clearAllButton.addEventListener('click', () => {
 
 yellowColorButton.addEventListener('click', () => {
     document.body.className = 'yellow-color'
+    localStorage.setItem('sheetTheme', 'yellow-color')
 })
 
 blueColorButton.addEventListener('click', () => {
     document.body.className = 'blue-color'
+    localStorage.setItem('sheetTheme', 'blue-color')
 })
 
 greenColorButton.addEventListener('click', () => {
     document.body.className = 'green-color'
+    localStorage.setItem('sheetTheme', 'green-color')
 })
 
 function addTask() {
@@ -96,7 +100,7 @@ function loadTasks() {
 }
 
 function clearAllTasks() {
-    localStorage.clear()
+    localStorage.removeItem('tasks')
     taskContainer.innerHTML = ''
     location.reload()
 }
@@ -118,4 +122,9 @@ function todoLastEdited() {
         const lastTaskCreatedOn = allTasks[allTasksLength - 1].createdTime
         document.getElementById('last-edited-message').innerText = 'Edited on ' + lastTaskCreatedOn
     }
+}
+
+function getSheetTheme() {
+    const sheetTheme = localStorage.getItem('sheetTheme')
+    document.body.className = sheetTheme
 }
