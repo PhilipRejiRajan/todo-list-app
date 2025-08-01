@@ -54,6 +54,9 @@ function addTask() {
         newTaskInput.value = ''
         todoLastEdited()
     }
+    else{
+        alert('Enter a new task!')
+    }
 }
 
 function createTask(task, taskIndex) {
