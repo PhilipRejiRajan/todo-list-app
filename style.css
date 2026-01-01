@@ -271,6 +271,10 @@ body {
     top: 50%;
 }
 
+.task-edited-time {
+    margin-right: 20px;
+}
+
 .custom-checkbox {
     --size: 25px;
     display: inline-block;
@@ -299,25 +303,6 @@ body {
 }
 
 [type="checkbox"]:checked + label .custom-checkbox > .check-mark{
-    display: block;
-}
-
-.created-on-date {
-    min-width: 200px;
-    height: 25px;
-    background-color: black;
-    border: 1px solid white;
-
-    color: white;
-    font-size: 12pt;
-    text-align: center;
-
-    display: none;
-    position: absolute;
-    z-index: 1;
-}
-
-.tasks:hover .created-on-date {
     display: block;
 }
 
