@@ -109,21 +109,49 @@ function clearAllTasks() {
 }
 
 function taskCreatedTime () {
-    const createdTime = new Date()
-    const date = createdTime.getDate()
-    const month = createdTime.getMonth()
-    const year = createdTime.getFullYear()
-    const time = createdTime.toLocaleTimeString()
-
-    const taskCreatedOn = `${date}-${month}-${year} ${time}`
-    return taskCreatedOn
+    const createdTime = Date.now()
+    //todoLastEdited()
+    return createdTime
 }
 
 function todoLastEdited() {
     const allTasksLength = allTasks.length
-    if (allTasksLength > 0) {
-        const lastTaskCreatedOn = allTasks[allTasksLength - 1].createdTime
-        document.getElementById('last-edited-message').innerText = 'Edited on ' + lastTaskCreatedOn
+    if ( allTasksLength > 0 ) {
+        const savedTime = allTasks[ allTasksLength - 1 ].createdTime
+        const timeNow = Date.now()
+        const timeDiff = timeNow - savedTime
+    
+        const secondsDiff = Math.floor( timeDiff / 1000 )
+        const minutesDiff = Math.floor( secondsDiff / 60 )
+        const hoursDiff = Math.floor( minutesDiff / 60 )
+        const daysDiff = Math.floor( hoursDiff / 24 )
+    
+    
+        let editMessage = ""
+    
+        if (secondsDiff < 60) {
+            editMessage = "Edited just now."
+        }
+        else if (minutesDiff === 1) {
+            editMessage = "Edited 1 minute ago."
+        } 
+        else if (minutesDiff < 60) {
+            editMessage = `Edited ${minutesDiff} minutes ago.`
+        } 
+        else if (hoursDiff === 1) {
+            editMessage = "Edited 1 hour ago."
+        } 
+        else if (hoursDiff < 24) {
+            editMessage = `Edited ${hoursDiff} hours ago.`
+        } 
+        else if (daysDiff === 1) {
+            editMessage = "Edited 1 day ago."
+        } 
+        else {
+            editMessage = `Edited ${daysDiff} days ago.`
+        }
+    
+        document.getElementById('last-edited-message').innerText = editMessage
     }
 }
 
