@@ -191,3 +191,10 @@ function getSheetTheme() {
     const sheetTheme = localStorage.getItem('sheetTheme')
     document.body.className = sheetTheme
 }
+
+setInterval(updateOnInterval, 30000)
+
+function updateOnInterval() {
+    todoLastEdited()
+    taskAddedOn()
+}
