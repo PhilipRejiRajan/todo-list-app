@@ -13,6 +13,7 @@ updateTaskContainer()
 
 document.addEventListener('DOMContentLoaded', () => {
     todoLastEdited()
+    taskAddedOn()
     getSheetTheme()
 })
 
@@ -53,6 +54,7 @@ function addTask() {
         saveTasks()
         newTaskInput.value = ''
         todoLastEdited()
+        taskAddedOn()
     }
     else{
         alert('Enter a new task!')
@@ -63,17 +65,16 @@ function createTask(task, taskIndex) {
     const taskID = 'task-' + taskIndex
     const newTask = document.createElement("div")
     const taskText = task.text
-    const taskCreatedOn = task.createdTime
     newTask.className = 'tasks'
     newTask.innerHTML = `
     <input type="checkbox" name="${taskID}" id="${taskID}">
     <label for="${taskID}">
         <div class="task-text">${taskText}</div>
+        <p id="task-edited-time-${taskIndex}" class="task-edited-time"></p>
         <span class="custom-checkbox">
             <img src="icons/check-mark.png" class="check-mark">
         </span>
         </label>
-    <div class="created-on-date">Created on: ${taskCreatedOn}</div>
     `
     const checkBox = newTask.querySelector('input')
     checkBox.addEventListener('change', () => {
@@ -110,7 +111,6 @@ function clearAllTasks() {
 
 function taskCreatedTime () {
     const createdTime = Date.now()
-    //todoLastEdited()
     return createdTime
 }
 
@@ -152,6 +152,38 @@ function todoLastEdited() {
         }
     
         document.getElementById('last-edited-message').innerText = editMessage
+    }
+}
+
+function taskAddedOn () {
+    const allTasksLength = allTasks.length
+    if ( allTasksLength > 0 ) {
+        allTasks.forEach((tasks, taskIndex) => {
+            const savedTime = tasks.createdTime
+            const timeNow = Date.now()
+            const timeDiff = timeNow - savedTime
+    
+            const secondsDiff = Math.floor( timeDiff / 1000 )
+            const minutesDiff = Math.floor( secondsDiff / 60 )
+            const hoursDiff = Math.floor( minutesDiff / 60 )
+            const daysDiff = Math.floor( hoursDiff / 24 )
+
+            let editMessage = ""
+    
+            if (secondsDiff < 60) {
+                editMessage = `${secondsDiff}s`
+            }
+            else if (minutesDiff < 60) {
+                editMessage = `${minutesDiff}m`
+            } 
+            else if (hoursDiff < 24) {
+                editMessage = `${hoursDiff}h`
+            } 
+            else {
+                editMessage = `${daysDiff}d`
+            }
+            document.getElementById(`task-edited-time-${taskIndex}`).innerText = editMessage
+        })
     }
 }
 
