@@ -9,9 +9,9 @@ const blueColorButton = document.getElementById('blue-color-button')
 const greenColorButton = document.getElementById('green-color-button')
 
 let allTasks = loadTasks()
-updateTaskContainer()
 
 document.addEventListener('DOMContentLoaded', () => {
+    updateTaskContainer()
     todoLastEdited()
     taskAddedOn()
     getSheetTheme()
