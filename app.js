@@ -3,6 +3,7 @@ const newTaskInput = document.getElementById('task-input')
 const taskContainer = document.getElementById('task-container')
 const submitButton = document.getElementById('submit-button')
 const clearAllButton = document.getElementById('clear-all-button')
+const clearCheckedButton = document.getElementById('clear-checked-button')
 
 const yellowColorButton = document.getElementById('yellow-color-button')
 const blueColorButton = document.getElementById('blue-color-button')
@@ -26,6 +27,10 @@ clearAllButton.addEventListener('click', () => {
     clearAllTasks()
 })
 
+clearCheckedButton.addEventListener('click', () => {
+    removeCheckedTasks()
+})
+
 yellowColorButton.addEventListener('click', () => {
     document.body.className = 'yellow-color'
     localStorage.setItem('sheetTheme', 'yellow-color')
@@ -40,6 +45,11 @@ greenColorButton.addEventListener('click', () => {
     document.body.className = 'green-color'
     localStorage.setItem('sheetTheme', 'green-color')
 })
+
+function getSheetTheme() {
+    const sheetTheme = localStorage.getItem('sheetTheme')
+    document.body.className = sheetTheme
+}
 
 function addTask() {
     const taskText = newTaskInput.value.trim()
@@ -115,9 +125,8 @@ function taskCreatedTime () {
 }
 
 function todoLastEdited() {
-    const allTasksLength = allTasks.length
-    if ( allTasksLength > 0 ) {
-        const savedTime = allTasks[ allTasksLength - 1 ].createdTime
+    if ( allTasks.length > 0 ) {
+        const savedTime = allTasks[ allTasks.length - 1 ].createdTime
         const timeNow = Date.now()
         const timeDiff = timeNow - savedTime
     
@@ -155,9 +164,8 @@ function todoLastEdited() {
     }
 }
 
-function taskAddedOn () {
-    const allTasksLength = allTasks.length
-    if ( allTasksLength > 0 ) {
+function taskAddedOn() {
+    if ( allTasks.length > 0 ) {
         allTasks.forEach((tasks, taskIndex) => {
             const savedTime = tasks.createdTime
             const timeNow = Date.now()
@@ -187,9 +195,22 @@ function taskAddedOn () {
     }
 }
 
-function getSheetTheme() {
-    const sheetTheme = localStorage.getItem('sheetTheme')
-    document.body.className = sheetTheme
+function removeCheckedTasks() {
+    let checkedTasks = []
+    if (allTasks.length > 0) {
+        allTasks.forEach((tasks) => {
+            if (tasks.completed === true) {
+                checkedTasks.push(tasks)
+            }
+        })
+    }
+    for (let i = allTasks.length - 1; i >= 0; i--) {
+        if (checkedTasks.includes(allTasks[i])) {
+            allTasks.splice(i, 1)
+        }
+    }
+    saveTasks()
+    location.reload()
 }
 
 setInterval(updateOnInterval, 30000)
