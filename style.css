@@ -177,9 +177,10 @@ body {
     right: 0;
 }
 
-#clear-all-button {
+.dropdown-actions {
     background-color: transparent;
-    border: 0;
+    border: none;
+    border-bottom: 1.5px dashed var(--primary-color);
     color: var(--primary-color);
     font-size: inherit;
     font-weight: 700;
@@ -189,7 +190,7 @@ body {
     cursor: pointer;
 }
 
-#clear-all-button:hover {
+.dropdown-actions:hover {
     background-color: rgba(0,0,0,0.2);
 }
 
