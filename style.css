@@ -179,8 +179,7 @@ body {
 
 .dropdown-actions {
     background-color: transparent;
-    border: none;
-    border-bottom: 1.5px dashed var(--primary-color);
+    border: 0;
     color: var(--primary-color);
     font-size: inherit;
     font-weight: 700;
