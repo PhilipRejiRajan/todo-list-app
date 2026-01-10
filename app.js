@@ -55,7 +55,7 @@ function addTask() {
     const taskText = newTaskInput.value.trim()
     if(taskText.length > 0 || taskText.value == '') {
         const taskObject = {
-            createdTime: taskCreatedTime(),
+            createdTime: Date.now(),
             text: taskText,
             completed: false
         }
@@ -117,11 +117,6 @@ function clearAllTasks() {
     localStorage.removeItem('tasks')
     taskContainer.innerHTML = ''
     location.reload()
-}
-
-function taskCreatedTime () {
-    const createdTime = Date.now()
-    return createdTime
 }
 
 function todoLastEdited() {
